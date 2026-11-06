@@ -105,15 +105,6 @@ function CameraRig() {
   return null;
 }
 
-/** Ticks a global store flag every frame without re-rendering React. */
-function ProgressBridge() {
-  const tick = useRef(0);
-  useFrame(() => {
-    tick.current++;
-  });
-  return null;
-}
-
 export default function HeroExperience({
   onSceneReady,
 }: {
@@ -188,7 +179,6 @@ export default function HeroExperience({
         <CarCover />
       </Suspense>
       <CameraRig />
-      <ProgressBridge />
     </Canvas>
   );
 }
