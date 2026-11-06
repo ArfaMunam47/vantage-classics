@@ -1,10 +1,4 @@
-import {
-  Suspense,
-  useEffect,
-  useMemo,
-  useRef,
-  type MutableRefObject,
-} from "react";
+import { Suspense, useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ACESFilmicToneMapping, MathUtils, type Camera } from "three";
 import {
@@ -199,5 +193,4 @@ export default function HeroExperience({
   );
 }
 
-export { clamp01 };
-export type { MutableRefObject };
+export {};
