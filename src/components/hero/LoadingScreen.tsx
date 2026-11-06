@@ -17,6 +17,7 @@ export function LoadingScreen() {
       const t1 = window.setTimeout(() => setFading(true), 450);
       return () => window.clearTimeout(t1);
     }
+    return undefined;
   }, [progress, fading]);
 
   useEffect(() => {

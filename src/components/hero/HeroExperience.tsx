@@ -37,14 +37,14 @@ function sampleKeys(keys: [number, number, number][], t: number, out: number[]) 
   const i = Math.min(n - 1, Math.floor(f));
   const k = f - i;
   // Catmull-Rom style smooth blend between keyframes
-  const e = k * k * (3 - 2 * k);
-  for (let a = 0; a < 3; a++) {
-    out[a] = MathUtils.lerp(
-      keys[i][a],
-      keys[i + 1][a],
-      e,
-    );
-  }
+    const e = k * k * (3 - 2 * k);
+    for (let a = 0; a < 3; a++) {
+      out[a] = MathUtils.lerp(
+        keys[i]![a],
+        keys[i + 1]![a],
+        e,
+      );
+    }
 }
 
 function CameraRig() {
@@ -84,14 +84,14 @@ function CameraRig() {
 
     const cam = camera as Camera;
     cam.position.set(
-      pos.current[0] * distance + swayX + parallax.current.x * parallaxScale,
-      pos.current[1] * distance + swayY - parallax.current.y * parallaxScale * 0.5,
-      pos.current[2] * distance,
+      pos.current[0]! * distance + swayX + parallax.current.x * parallaxScale,
+      pos.current[1]! * distance + swayY - parallax.current.y * parallaxScale * 0.5,
+      pos.current[2]! * distance,
     );
     cam.lookAt(
-      target.current[0] - parallax.current.x * 0.25,
-      target.current[1] + parallax.current.y * 0.15,
-      target.current[2],
+      target.current[0]! - parallax.current.x * 0.25,
+      target.current[1]! + parallax.current.y * 0.15,
+      target.current[2]!,
     );
   });
 

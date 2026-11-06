@@ -24,15 +24,15 @@ export default function HeroStage() {
     revealMotion.userInteracted = true;
     revealMotion.dragging = true;
     (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
-    (e.currentTarget as HTMLDivElement).dataset.startX = String(e.clientX);
-    (e.currentTarget as HTMLDivElement).dataset.startTarget = String(revealMotion.target);
+    (e.currentTarget as HTMLDivElement).dataset["startX"] = String(e.clientX);
+    (e.currentTarget as HTMLDivElement).dataset["startTarget"] = String(revealMotion.target);
   };
 
   const onDragMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!revealMotion.dragging) return;
     const el = e.currentTarget as HTMLDivElement;
-    const startX = Number(el.dataset.startX ?? e.clientX);
-    const startTarget = Number(el.dataset.startTarget ?? 0);
+    const startX = Number(el.dataset["startX"] ?? e.clientX);
+    const startTarget = Number(el.dataset["startTarget"] ?? 0);
     const width = el.getBoundingClientRect().width || 1;
     revealMotion.target = clamp01(startTarget + (e.clientX - startX) / (width * 0.55));
   };

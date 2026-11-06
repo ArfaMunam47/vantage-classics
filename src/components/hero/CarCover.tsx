@@ -142,6 +142,7 @@ export function CarCover() {
         arr[i] = x + (fbm(x * 1.6, z * 1.6, 7.7 + time * 0.35) - 0.5) * 0.16 * p;
         arr[i + 1] = Math.max(0.015, y0 + wobble);
         arr[i + 2] = z;
+      }
       pos.needsUpdate = true;
       geometry.computeVertexNormals();
     }
