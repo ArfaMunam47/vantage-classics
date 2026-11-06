@@ -40,8 +40,8 @@ function sampleKeys(keys: [number, number, number][], t: number, out: number[]) 
     const e = k * k * (3 - 2 * k);
     for (let a = 0; a < 3; a++) {
       out[a] = MathUtils.lerp(
-        keys[i]![a],
-        keys[i + 1]![a],
+        keys[i]![a]!,
+        keys[i + 1]![a]!,
         e,
       );
     }

@@ -100,9 +100,9 @@ export function CarCover() {
     const zs = new Float32Array(arr.length / 3);
     const ys = new Float32Array(arr.length / 3);
     for (let i = 0; i < arr.length; i += 3) {
-      xs[i / 3] = arr[i];
-      ys[i / 3] = arr[i + 1];
-      zs[i / 3] = arr[i + 2];
+      xs[i / 3] = arr[i]!;
+      ys[i / 3] = arr[i + 1]!;
+      zs[i / 3] = arr[i + 2]!;
     }
     return { xs, ys, zs };
   }, [geometry]);
