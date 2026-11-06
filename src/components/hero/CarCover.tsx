@@ -131,9 +131,9 @@ export function CarCover() {
       const { xs, ys, zs } = base;
       const amp = 0.045 + 0.34 * p;
       for (let i = 0; i < arr.length; i += 3) {
-        const x = xs[i / 3];
-        const y0 = ys[i / 3];
-        const z = zs[i / 3];
+        const x = xs[i / 3]!;
+        const y0 = ys[i / 3]!;
+        const z = zs[i / 3]!;
         const skirt = clamp((Math.abs(x) - HALF_W) / 0.36, 0, 1);
         const raised = y0 > 0.1 ? 1 : 0;
         const wobble =
@@ -142,7 +142,6 @@ export function CarCover() {
         arr[i] = x + (fbm(x * 1.6, z * 1.6, 7.7 + time * 0.35) - 0.5) * 0.16 * p;
         arr[i + 1] = Math.max(0.015, y0 + wobble);
         arr[i + 2] = z;
-      }
       pos.needsUpdate = true;
       geometry.computeVertexNormals();
     }
