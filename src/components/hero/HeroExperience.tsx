@@ -1,10 +1,4 @@
-import {
-  Suspense,
-  useEffect,
-  useMemo,
-  useRef,
-  type MutableRefObject,
-} from "react";
+import { Suspense, useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ACESFilmicToneMapping, MathUtils, type Camera } from "three";
 import {
@@ -43,14 +37,14 @@ function sampleKeys(keys: [number, number, number][], t: number, out: number[]) 
   const i = Math.min(n - 1, Math.floor(f));
   const k = f - i;
   // Catmull-Rom style smooth blend between keyframes
-  const e = k * k * (3 - 2 * k);
-  for (let a = 0; a < 3; a++) {
-    out[a] = MathUtils.lerp(
-      keys[i][a],
-      keys[i + 1][a],
-      e,
-    );
-  }
+    const e = k * k * (3 - 2 * k);
+    for (let a = 0; a < 3; a++) {
+      out[a] = MathUtils.lerp(
+        keys[i]![a]!,
+        keys[i + 1]![a]!,
+        e,
+      );
+    }
 }
 
 function CameraRig() {
@@ -90,14 +84,14 @@ function CameraRig() {
 
     const cam = camera as Camera;
     cam.position.set(
-      pos.current[0] * distance + swayX + parallax.current.x * parallaxScale,
-      pos.current[1] * distance + swayY - parallax.current.y * parallaxScale * 0.5,
-      pos.current[2] * distance,
+      pos.current[0]! * distance + swayX + parallax.current.x * parallaxScale,
+      pos.current[1]! * distance + swayY - parallax.current.y * parallaxScale * 0.5,
+      pos.current[2]! * distance,
     );
     cam.lookAt(
-      target.current[0] - parallax.current.x * 0.25,
-      target.current[1] + parallax.current.y * 0.15,
-      target.current[2],
+      target.current[0]! - parallax.current.x * 0.25,
+      target.current[1]! + parallax.current.y * 0.15,
+      target.current[2]!,
     );
   });
 
@@ -108,15 +102,6 @@ function CameraRig() {
     (camera as Camera & { updateProjectionMatrix: () => void }).updateProjectionMatrix();
   }, [camera, size]);
 
-  return null;
-}
-
-/** Ticks a global store flag every frame without re-rendering React. */
-function ProgressBridge() {
-  const tick = useRef(0);
-  useFrame(() => {
-    tick.current++;
-  });
   return null;
 }
 
@@ -194,10 +179,8 @@ export default function HeroExperience({
         <CarCover />
       </Suspense>
       <CameraRig />
-      <ProgressBridge />
     </Canvas>
   );
 }
 
-export { clamp01 };
-export type { MutableRefObject };
+export {};
