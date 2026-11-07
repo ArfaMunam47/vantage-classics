@@ -59,7 +59,7 @@ function profileHeight(z: number) {
 function baseHeight(x: number, z: number) {
   const ax = Math.abs(x);
   if (ax <= HALF_W) {
-    const dome = Math.pow(Math.cos(clamp(ax / HALF_W, 0, 1) * (Math.PI / 2)), 0.72);
+    const dome = Math.pow(Math.cos(clamp(ax / HALF_W, 0, 1) * (Math.PI / 2)), 0.38);
     return profileHeight(z) * dome;
   }
   // Skirt pooling on the studio floor
@@ -117,11 +117,11 @@ export function CarCover() {
       g.visible = value < 0.995;
       // Peel off toward the car's left-rear, lifting and rolling as it goes.
       g.position.set(
-        p * 3.1,
+        -p * 3.4,
         p * 1.85 + Math.sin(time * 1.7) * 0.025,
         -p * 2.75,
       );
-      g.rotation.z = -p * 1.05;
+      g.rotation.z = p * 1.05;
       g.rotation.x = p * 0.32;
     }
 
@@ -150,7 +150,7 @@ export function CarCover() {
 
   return (
     <group ref={group}>
-      <mesh geometry={geometry} castShadow receiveShadow>
+      <mesh geometry={geometry} castShadow receiveShadow scale={[1.18, 1.22, 1.06]}>
         <meshPhysicalMaterial
           color="#cfccc4"
           roughness={0.94}
