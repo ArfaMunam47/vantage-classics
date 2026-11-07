@@ -24,7 +24,7 @@ export function Navigation() {
         </Link>
 
         {/* Next to the brand: small editorial tagline */}
-        <p className="ml-4 hidden max-w-[180px] text-[9px] leading-relaxed tracking-[0.14em] text-muted-foreground/80 uppercase lg:block">
+        <p className="absolute left-48 hidden max-w-[180px] text-[9px] leading-relaxed tracking-[0.14em] text-muted-foreground/80 uppercase xl:block">
           It&apos;s the classic that never stopped turning heads.
         </p>
 

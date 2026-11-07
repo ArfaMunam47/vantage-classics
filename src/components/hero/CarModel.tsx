@@ -3,6 +3,8 @@ import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import {
   AdditiveBlending,
+  Box3,
+  Vector3,
   CanvasTexture,
   Mesh,
   MeshStandardMaterial,
@@ -71,6 +73,12 @@ export function CarModel() {
 
   // One-time material and shadow tuning on the baked model.
   useMemo(() => {
+    // Ground the model at y=0 and center it on x/z so the cover drapes correctly.
+    scene.position.set(0, 0, 0);
+    scene.updateMatrixWorld(true);
+    const box = new Box3().setFromObject(scene);
+    const c = box.getCenter(new Vector3());
+    scene.position.set(-c.x, -box.min.y, -c.z);
     scene.traverse((obj) => {
       const mesh = obj as Mesh;
       if (!mesh.isMesh) return;
